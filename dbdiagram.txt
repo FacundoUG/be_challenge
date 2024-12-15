@@ -1,0 +1,40 @@
+Table User {
+  id integer [pk]
+  name varchar
+  email varchar 
+  indexes {
+    (email) [unique]
+  }
+}
+
+Table Exam {
+  id integer [pk]
+  title varchar
+}
+
+Table Question {
+  id integer [pk]
+  examId integer [ref: > Exam.id]
+  text varchar
+  type varchar
+  options varchar
+}
+
+Table Answer {
+  id integer [pk]
+  attemptId integer [ref: > ExamAttempts.id]
+  questionId integer [ref: > Question.id]
+  answer varchar
+  createdAt date
+}
+
+Table ExamAttempts {
+  id integer [pk]
+  examId integer [ref: > Exam.id]
+  userId integer [ref: > User.id]
+  startTime time
+
+  indexes {
+    (userId, examId) [unique]
+  }
+}

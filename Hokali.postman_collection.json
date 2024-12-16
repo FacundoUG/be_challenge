@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "83ac1d29-5e9a-46b4-88f1-d176ee0c0346",
+		"name": "Hokali",
+		"description": "This collection has the endpoints from user and exam.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27525577"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Facundo Gasser\",\r\n    \"email\": \"fgasser@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12000",
+							"path": [
+								"users"
+							]
+						},
+						"description": "This ep creates an user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exam",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Examen de Historia\",\r\n  \"questions\": [\r\n    {\r\n      \"text\": \"¿Quién descubrió América?\",\r\n      \"type\": \"multiple_choice\",\r\n      \"options\": [\"Cristóbal Colón\", \"Américo Vespucio\", \"Fernando de Magallanes\", \"Hernán Cortés\"]\r\n    },\r\n    {\r\n      \"text\": \"La Revolución Francesa ocurrió en 1789.\",\r\n      \"type\": \"true_false\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12000/exams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12000",
+							"path": [
+								"exams"
+							]
+						},
+						"description": "create exam"
+					},
+					"response": []
+				},
+				{
+					"name": "Start",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12000/exams/:examId/start?userId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12000",
+							"path": [
+								"exams",
+								":examId",
+								"start"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							],
+							"variable": [
+								{
+									"key": "examId",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Response",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"attemptId\": 2,\r\n  \"answer\": \"False\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12000/exams/:examId/questions/:questionId/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12000",
+							"path": [
+								"exams",
+								":examId",
+								"questions",
+								":questionId",
+								"answer"
+							],
+							"variable": [
+								{
+									"key": "examId",
+									"value": "13"
+								},
+								{
+									"key": "questionId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finish",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"attemptId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12000/exams/:id/finish",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12000",
+							"path": [
+								"exams",
+								":id",
+								"finish"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12000/exams/:id/results?userId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12000",
+							"path": [
+								"exams",
+								":id",
+								"results"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

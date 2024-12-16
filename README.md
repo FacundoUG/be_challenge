@@ -61,7 +61,9 @@ start:
 	http://localhost:{port}/exams/:examId/start?userId={userId}
 
 response: 
-		
+
+if you want to test the response time limit you can change in the answerController.ts the value 60 * 60 * 1000 to 60 * 1000, to have a 1 min limit instead of 1 hour limit.
+  
 	examId -> is the id for the exam in the path variable
 	questionId -> is the id for the questionId
 	
